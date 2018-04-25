@@ -1,6 +1,10 @@
 # SPLegacyDatasheet
 A JavaScript library enabling the use of the SharePoint 2007/2010 Datasheet view that was based on MS Access
 
+# Requirements
+The end user must have Microsoft's Access 2010 database engine (32-bit) installed (https://www.microsoft.com/en-us/download/details.aspx?id=13255) to support the ListNet / STSList.dll ActiveX component (https://msdn.microsoft.com/en-us/library/ms416795(v=office.14).aspx)
+The end user must use Microsoft Internet Explorer (32-bit) as their browser when trying to view legacy datasheets https://www.microsoft.com/en-us/download/internet-explorer.aspx
+
 # Explicit (hard code your list and view GUIDs)
 Download a copy of the "spLDS.js" file and open it in a text editor like Notepad
 Set spLDS.listGUID to the GUID of your list
