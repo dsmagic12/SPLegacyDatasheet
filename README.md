@@ -15,6 +15,8 @@ Click OK to save your changes to the Content Editor Web Part
 Stop editing the page to save your changes
 Once the page loads, you should see that the list view you specified in the code file is replaced with a legacy datasheet
 
+A working example is available here: http://1.dsmagicsp.cloudappsportal.com/SitePages/demo_datasheetView.aspx
+
 
 # Simple (add web part to page containing Quick Edit views)
 Upload both "spLDS_replaceQuickEditView.js" and "wp_spLDS_replaceQuickEditView.html" to your site's Style Library
@@ -25,3 +27,5 @@ Optionally, set the Chrome Type property (under 'Appearance') of the Content Edi
 Click OK to save your changes to the Content Editor Web Part
 Stop editing the page to save your changes
 Once the page loads, you should see messages in your browser's script console about the code working to replace each Quick Edit view on the page with a legacy datasheet
+
+NOTE!!! The old datasheet view's performance wasn't great. If you add this to a page containing more than 1 or 2 Quick Edit views, you should expect that the page performance and initial load time will be less than ideal.
