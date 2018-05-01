@@ -13,7 +13,7 @@ var spLDS = {
             listGUID: listGUID,
             listDisplayName: listDisplayName,
             viewGUID: viewGUID, 
-            listWeb: _spPageContextInfo.siteAbsoluteUrl,
+            listWeb: _spPageContextInfo.webAbsoluteUrl,
             bAbort: false,
             bReady: false,
             instanceObjectElement: null,
