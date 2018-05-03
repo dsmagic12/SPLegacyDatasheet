@@ -7,6 +7,7 @@ var spLDS = {
     bRunOnLoad: true,
     bReplaceQuickEditView: false,
     bBrowserNoSupport: false,
+    bEditMode: false,
     instances: [],
     new: function(listGUID, viewGUID, wpSeqID, wpWrapperDivID, wpWrapperDivWebPartID, listDisplayName){
         return {
@@ -319,9 +320,15 @@ var spLDS = {
             });
         }
     },
+    isPageInEditMode: function() {
+        /*https://sharepoint.stackexchange.com/questions/149096/a-way-to-identify-when-page-is-in-edit-mode-for-javascript-purposes*/
+        var result = (window.MSOWebPartPageFormName != undefined) && ((document.forms[window.MSOWebPartPageFormName] && document.forms[window.MSOWebPartPageFormName].MSOLayout_InDesignMode && ("1" == document.forms[window.MSOWebPartPageFormName].MSOLayout_InDesignMode.value)) || (document.forms[window.MSOWebPartPageFormName] && document.forms[window.MSOWebPartPageFormName]._wikiPageMode && ("Edit" == document.forms[window.MSOWebPartPageFormName]._wikiPageMode.value)));
+        this.editMode = result || false;
+        return result || false;
+    },
     /*onLoad: setInterval(function(){*/
     onLoad: setTimeout(function(){
-        if ( spLDS.bRunOnLoad === true ){
+        if ( spLDS.bRunOnLoad === true && spLDS.isPageInEditMode() === false ){
             /*if ( document.readyState === "complete" ){*/
                 ExecuteOrDelayUntilScriptLoaded(function(){
                     ExecuteOrDelayUntilScriptLoaded(function(){
