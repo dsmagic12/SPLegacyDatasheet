@@ -1,6 +1,10 @@
 var fxOnDatasheetReadyStateChange = function(event){
     try{console.log(event);}catch(err){}
 };
+var fxOtherEvents = function(event){
+    try{console.log("fxOtherEvents fired");}catch(err){}
+    try{console.log(event);}catch(err){}
+};
 var spLDS = {
     arrXHR: [],
     arrH: [],
@@ -106,7 +110,7 @@ var spLDS = {
                 spLDS.instances[spLDSIndex].arrH.push(spLDS.instances[spLDSIndex].contentArea.height);
                 spLDS.instances[spLDSIndex].arrH.push('" tabIndex="1" class="ms-dlgDisable" id="STSListControlWPQ');
                 spLDS.instances[spLDSIndex].arrH.push(spLDS.instances[spLDSIndex].replaceWebPart.wpSequenceID)
-                spLDS.instances[spLDSIndex].arrH.push('" classid="CLSID:65BCBEE4-7728-41A0-97BE-14E1CAE36AAE" onreadystatechange="fxOnDatasheetReadyStateChange()">');
+                spLDS.instances[spLDSIndex].arrH.push('" classid="CLSID:65BCBEE4-7728-41A0-97BE-14E1CAE36AAE" ReceiveMessage="fxOtherEvents()" onreadystatechange="fxOnDatasheetReadyStateChange()">');
                 spLDS.instances[spLDSIndex].arrH.push('<param name="ListName" value="{')
                 spLDS.instances[spLDSIndex].arrH.push(spLDS.instances[spLDSIndex].listGUID);
                 spLDS.instances[spLDSIndex].arrH.push('}"><param name="ViewGuid" value="{');
@@ -120,8 +124,8 @@ var spLDS = {
                 spLDS.instances[spLDSIndex].arrH.push('"><param name="ListSchema" value="');
                 spLDS.instances[spLDSIndex].arrH.push(spLDS.instances[spLDSIndex].listSchema);
                 spLDS.instances[spLDSIndex].arrH.push('"><param name="ControlName" value="STSListControlWPQ');
-                spLDS.instances[spLDSIndex].arrH.push(spLDS.instances[spLDSIndex].replaceWebPart.wpSequenceID)
-                spLDS.instances[spLDSIndex].arrH.push('"><p class="ms-descriptiontext">Ooops your browser\'s ActiveX controls don\'t work<br/><a href="https://www.microsoft.com/en-us/download/details.aspx?id=13255">You may need to install the MS Access database engine from MS Office 2010 (https://www.microsoft.com/en-us/download/details.aspx?id=13255)</a></p></object>');
+                spLDS.instances[spLDSIndex].arrH.push(spLDS.instances[spLDSIndex].replaceWebPart.wpSequenceID);
+                spLDS.instances[spLDSIndex].arrH.push('"><p class="ms-descriptiontext">Ooops your browser\'s ActiveX controls don\'t work<br/><a href="https://www.microsoft.com/en-us/download/details.aspx?id=13255">You may need to install the MS Access database engine from MS Office 2010 (https://www.microsoft.com/en-us/download/details.aspx?id=13255)</a></p>');
                 var origWebPart = document.getElementById("WebPartWPQ"+spLDS.instances[spLDSIndex].replaceWebPart.wpSequenceID);
                 if ( spLDS.instances[spLDSIndex].bAbort === false && spLDS.bBrowserNoSupport === false ){
                     origWebPart.innerHTML = spLDS.instances[spLDSIndex].arrH.join("");
