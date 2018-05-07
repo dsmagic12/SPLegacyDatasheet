@@ -308,6 +308,7 @@ var spLDS = {
         return oRet;
     },
     init: function(){
+        try{console.log("spLDS running after detecting jsgrid.js and core.js as loaded")}catch(err){}
         if ( spLDS.checkBrowserCompatibility() === true ){
             try{console.log("spLDS is looking for all QuickEdit views on the page")}catch(err){}
             spLDS.getDatasheetViewsOnPage(function(){
@@ -326,19 +327,26 @@ var spLDS = {
         this.editMode = result || false;
         return result || false;
     },
-    /*onLoad: setInterval(function(){*/
     onLoad: setTimeout(function(){
         if ( spLDS.bRunOnLoad === true && spLDS.isPageInEditMode() === false ){
-            /*if ( document.readyState === "complete" ){*/
+            /*
+            try{console.log("spLDS waiting for sharepoint to be ready (core.js and jsgrid.js loaded)")}catch(err){}
+            SP.SOD.executeFunc('core.js', null, function(){
+                try{console.log("spLDS running on load after detecting core.js as loaded")}catch(err){}
+                SP.SOD.executeFunc('jsgrid.js', null, function(){
+                    spLDS.init();
+                });
+            });
+            */
+            try{console.log("spLDS waiting for sharepoint to be ready (core.js and jsgrid.js loaded)")}catch(err){}
+            ExecuteOrDelayUntilScriptLoaded(function(){
+                try{console.log("spLDS running on load after detecting core.js as loaded")}catch(err){}
                 ExecuteOrDelayUntilScriptLoaded(function(){
-                    ExecuteOrDelayUntilScriptLoaded(function(){
-                        try{console.log("spLDS running on load after detecting jsgrid.js and core.js as loaded")}catch(err){}
-                        /*_spBodyOnLoadFunctions.push(spLDS.init)*/
-                        spLDS.init();
-                        /*clearInterval(spLDS.onLoad);*/
-                    },"core.js");
-                }, "jsgrid.js");        
-            /*}*/
+                    try{console.log("spLDS running on load after detecting jsgrid.js as loaded")}catch(err){}
+                    spLDS.init();
+                },"jsgrid.js");
+            },"core.js");
+
         }
-    },4123)
+    },23)
 }
