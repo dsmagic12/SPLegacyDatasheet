@@ -37,6 +37,4 @@ Click OK to save your changes to the Content Editor Web Part
 Stop editing the page to save your changes
 Once the page loads, you should see that the list view you specified in the code file is replaced with a legacy datasheet
 
-A working example is available here: http://1.dsmagicsp.cloudappsportal.com/SitePages/demo_datasheetView.aspx
-
 
